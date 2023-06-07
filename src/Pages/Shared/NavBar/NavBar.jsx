@@ -1,8 +1,21 @@
 import { Link } from "react-router-dom";
 import ActiveLink from "../../../Components/ActiveLink/ActiveLink";
 import logo from "../../../assets/logo.png";
+import { useAuth } from "../../../Hooks/useAuth";
+import { useState } from "react";
+import { setTheme } from "../../../Utility/Theme/theme";
+import sun from "../../../assets/svg/sun.svg";
+import moon from "../../../assets/svg/moon.svg";
 
 const NavBar = () => {
+  const { user } = useAuth();
+  const retrieveTheme = localStorage.getItem("theme") === "dark";
+  const [isDark, setIsDark] = useState(retrieveTheme);
+
+  const handleTheme = () => {
+    setIsDark(!isDark);
+    setTheme(!isDark);
+  };
   const navLinks = (
     <>
       <li>
@@ -14,6 +27,22 @@ const NavBar = () => {
       <li>
         <ActiveLink to="/classes">Classes</ActiveLink>
       </li>
+      {!user ? (
+        <>
+          <Link to="/login">
+            <button className="cs-gradient-btn">Log in</button>
+          </Link>
+        </>
+      ) : (
+        ""
+      )}
+      <button onClick={handleTheme} className="btn btn-accent ms-5">
+        {isDark ? (
+          <img src={sun} alt="Sun" className="w-6 h-6" />
+        ) : (
+          <img src={moon} alt="Moon" className="w-6 h-6" />
+        )}
+      </button>
     </>
   );
   return (
@@ -49,7 +78,7 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 font-poppins font-semibold">
+          <ul className="menu menu-horizontal px-1 font-poppins font-semibold items-center">
             {navLinks}
           </ul>
         </div>

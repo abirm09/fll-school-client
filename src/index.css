@@ -5,3 +5,15 @@
 .cs-container {
     @apply max-w-7xl mx-auto px-2
 }
+
+.cs-text-gradient {
+    @apply bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent
+}
+
+.cs-bg-gradient {
+    @apply bg-gradient-to-r from-blue-200 to-cyan-200
+}
+
+.cs-gradient-btn {
+    @apply btn cs-bg-gradient text-black font-poppins
+}

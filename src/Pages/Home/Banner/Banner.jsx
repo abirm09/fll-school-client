@@ -16,7 +16,7 @@ const Banner = () => {
           <SwiperSlide>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5 justify-center">
               <div className="space-y-5">
-                <h2 className="text-2xl md:text-5xl font-poppins font-bold">
+                <h2 className="text-2xl md:text-5xl font-poppins font-bold cs-text-gradient">
                   Increase your typing skills
                 </h2>
                 <p>
@@ -38,7 +38,7 @@ const Banner = () => {
           <SwiperSlide>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5 justify-center">
               <div className="space-y-5">
-                <h2 className="text-2xl md:text-5xl font-poppins font-bold">
+                <h2 className="text-2xl md:text-5xl font-poppins font-bold cs-text-gradient">
                   Communicate with the world
                 </h2>
                 <p>
@@ -62,7 +62,7 @@ const Banner = () => {
           <SwiperSlide>
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5 justify-center">
               <div className="space-y-5">
-                <h2 className="text-2xl md:text-5xl font-poppins font-bold">
+                <h2 className="text-2xl md:text-5xl font-poppins font-bold cs-text-gradient">
                   Develop your speaking and listening skill
                 </h2>
                 <p>
