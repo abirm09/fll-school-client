@@ -2,8 +2,9 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+export const baseUrl = "http://localhost:5000/";
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: baseUrl,
 });
 export const useAxiosSecure = () => {
   const navigate = useNavigate();
