@@ -1,8 +1,7 @@
 import { useAuth } from "../../../Hooks/useAuth";
 
 const LogInWithGoogle = () => {
-  const { googleLogin, user } = useAuth();
-  console.log(user);
+  const { googleLogin } = useAuth();
   const handleGoogleLogin = () => {
     googleLogin()
       .then(res => console.log(res.user))

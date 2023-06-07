@@ -31,3 +31,8 @@
 .cs-form-control div input {
     @apply outline-none p-3 font-normal bg-transparent flex-1
 }
+
+/* form error */
+.form-error {
+    @apply font-poppins text-red-500 font-semibold
+}

@@ -3,8 +3,16 @@ import { AiOutlineMail } from "react-icons/ai";
 import { FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import LogInWithGoogle from "../../Pages/Shared/LogInWithGoogle/LogInWithGoogle";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = data => console.log(data);
   return (
     <section>
       <div className="cs-container">
@@ -17,13 +25,20 @@ const Login = () => {
           </div>
           <div>
             <div className="flex justify-center">
-              <form className="max-w-sm w-full">
+              <form
+                className="max-w-sm w-full"
+                onSubmit={handleSubmit(onSubmit)}
+              >
                 <div className="space-y-5">
                   <div className="cs-form-control">
                     <label htmlFor="email">Email</label>
                     <div>
                       <AiOutlineMail className="text-slate-400" />
-                      <input type="email" placeholder="Type your email" />
+                      <input
+                        type="email"
+                        placeholder="Type your email"
+                        {...register("email")}
+                      />
                     </div>
                   </div>
                   <div className="cs-form-control">
@@ -33,6 +48,7 @@ const Login = () => {
                       <input
                         type={showPass ? "text" : "password"}
                         placeholder="Password"
+                        {...register("password")}
                       />
                       <span
                         className="cursor-pointer"
