@@ -30,7 +30,7 @@ const NavBar = () => {
       {!user ? (
         <>
           <Link to="/login">
-            <button className="cs-gradient-btn">Log in</button>
+            <button className="cs-gradient-btn ms-3">Log in</button>
           </Link>
         </>
       ) : (

@@ -17,3 +17,17 @@
 .cs-gradient-btn {
     @apply btn cs-bg-gradient text-black font-poppins
 }
+
+
+/* Form style */
+.cs-form-control {
+    @apply font-poppins font-semibold border-b-2 w-full
+}
+
+.cs-form-control div {
+    @apply flex items-center px-2 w-full justify-between
+}
+
+.cs-form-control div input {
+    @apply outline-none p-3 font-normal bg-transparent flex-1
+}
