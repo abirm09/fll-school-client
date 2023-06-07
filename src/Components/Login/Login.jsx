@@ -8,6 +8,7 @@ import { useAuth } from "../../Hooks/useAuth";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
+  const [logInErr, setLogInErr] = useState("");
   const { loginWIthEmail } = useAuth();
   const {
     register,
@@ -15,9 +16,10 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = data => {
+    setLogInErr("");
     loginWIthEmail(data.email, data.password)
       .then(res => console.log(res.user))
-      .catch(err => console.log(err));
+      .catch(err => setLogInErr(err.message.split("/")[1].replace(")", "")));
   };
   return (
     <section>
@@ -74,6 +76,7 @@ const Login = () => {
                       Email is required
                     </p>
                   )}
+                  {logInErr && <p className="form-error">Error : {logInErr}</p>}
                   <input
                     type="submit"
                     value="Login"

@@ -10,6 +10,7 @@ import { useAuth } from "../../Hooks/useAuth";
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
   const { createAccount } = useAuth();
+  const [logInErr, setLogInErr] = useState("");
   const {
     register,
     handleSubmit,
@@ -23,7 +24,7 @@ const Register = () => {
           .catch(err => console.log(err));
         console.log(res.user);
       })
-      .catch(err => console.log(err));
+      .catch(err => setLogInErr(err.message.split("/")[1].replace(")", "")));
   };
   const updateUser = (user, name, photo) => {
     return updateProfile(user, {
@@ -147,6 +148,7 @@ const Register = () => {
                       />
                     </div>
                   </div>
+                  {logInErr && <p className="form-error">Error : {logInErr}</p>}
                   <input
                     type="submit"
                     value="Register"

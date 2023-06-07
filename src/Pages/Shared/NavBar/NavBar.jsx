@@ -37,35 +37,40 @@ const NavBar = () => {
           </Link>
         </>
       ) : (
-        <li className="p-0">
-          <details className="dropdown">
-            <summary className="m-1">
-              <img
-                src={user?.photoURL}
-                alt="user profile"
-                className="p-0 rounded-full"
-              />
-            </summary>
-            <ul className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
-              <li>
-                <a>
-                  <FaUserAlt /> {user?.displayName}
-                </a>
-              </li>
-              <li>
-                <a>
-                  <BsFillGearFill /> settings
-                </a>
-              </li>
-              <hr />
-              <li>
-                <a onClick={logOut}>
-                  <FiLogOut /> Log out
-                </a>
-              </li>
-            </ul>
-          </details>
-        </li>
+        <>
+          <li>
+            <ActiveLink to="/dashboard">Dashboard</ActiveLink>
+          </li>
+          <li className="p-0">
+            <details className="dropdown">
+              <summary className="m-1">
+                <img
+                  src={user?.photoURL}
+                  alt="user profile"
+                  className="p-0 rounded-full"
+                />
+              </summary>
+              <ul className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52 z-10">
+                <li>
+                  <a>
+                    <FaUserAlt /> {user?.displayName}
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <BsFillGearFill /> settings
+                  </a>
+                </li>
+                <hr />
+                <li>
+                  <a onClick={logOut}>
+                    <FiLogOut /> Log out
+                  </a>
+                </li>
+              </ul>
+            </details>
+          </li>
+        </>
       )}
 
       <button onClick={handleTheme} className="btn btn-accent ms-5">
