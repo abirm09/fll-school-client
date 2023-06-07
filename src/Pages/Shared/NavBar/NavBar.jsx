@@ -6,9 +6,12 @@ import { useState } from "react";
 import { setTheme } from "../../../Utility/Theme/theme";
 import sun from "../../../assets/svg/sun.svg";
 import moon from "../../../assets/svg/moon.svg";
+import { FaUserAlt } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
+import { BsFillGearFill } from "react-icons/bs";
 
 const NavBar = () => {
-  const { user } = useAuth();
+  const { user, logOut } = useAuth();
   const retrieveTheme = localStorage.getItem("theme") === "dark";
   const [isDark, setIsDark] = useState(retrieveTheme);
 
@@ -34,8 +37,37 @@ const NavBar = () => {
           </Link>
         </>
       ) : (
-        ""
+        <li className="p-0">
+          <details className="dropdown">
+            <summary className="m-1">
+              <img
+                src={user?.photoURL}
+                alt="user profile"
+                className="p-0 rounded-full"
+              />
+            </summary>
+            <ul className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
+              <li>
+                <a>
+                  <FaUserAlt /> {user?.displayName}
+                </a>
+              </li>
+              <li>
+                <a>
+                  <BsFillGearFill /> settings
+                </a>
+              </li>
+              <hr />
+              <li>
+                <a onClick={logOut}>
+                  <FiLogOut /> Log out
+                </a>
+              </li>
+            </ul>
+          </details>
+        </li>
       )}
+
       <button onClick={handleTheme} className="btn btn-accent ms-5">
         {isDark ? (
           <img src={sun} alt="Sun" className="w-6 h-6" />

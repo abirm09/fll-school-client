@@ -4,15 +4,21 @@ import { FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import LogInWithGoogle from "../../Pages/Shared/LogInWithGoogle/LogInWithGoogle";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../../Hooks/useAuth";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
+  const { loginWIthEmail } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = data => {
+    loginWIthEmail(data.email, data.password)
+      .then(res => console.log(res.user))
+      .catch(err => console.log(err));
+  };
   return (
     <section>
       <div className="cs-container">
@@ -37,10 +43,15 @@ const Login = () => {
                       <input
                         type="email"
                         placeholder="Type your email"
-                        {...register("email")}
+                        {...register("email", { required: true })}
                       />
                     </div>
                   </div>
+                  {errors.email?.type === "required" && (
+                    <p role="alert" className="form-error">
+                      Email is required
+                    </p>
+                  )}
                   <div className="cs-form-control">
                     <label htmlFor="password">Password</label>
                     <div>
@@ -48,7 +59,7 @@ const Login = () => {
                       <input
                         type={showPass ? "text" : "password"}
                         placeholder="Password"
-                        {...register("password")}
+                        {...register("password", { required: true })}
                       />
                       <span
                         className="cursor-pointer"
@@ -58,6 +69,11 @@ const Login = () => {
                       </span>
                     </div>
                   </div>
+                  {errors.email?.type === "required" && (
+                    <p role="alert" className="form-error">
+                      Email is required
+                    </p>
+                  )}
                   <input
                     type="submit"
                     value="Login"
