@@ -6,9 +6,10 @@ import ActiveLink from "../Components/ActiveLink/ActiveLink";
 import { FaHome, FaWallet } from "react-icons/fa";
 import { TbSelect } from "react-icons/tb";
 import { BsFillCartCheckFill } from "react-icons/bs";
+import { MdAddBox } from "react-icons/md";
+import { RiFileUserFill } from "react-icons/ri";
 const Dashboard = () => {
-  const role = useRole();
-
+  const { role } = useRole();
   const user = (
     <>
       <li>
@@ -38,7 +39,14 @@ const Dashboard = () => {
   const instructor = (
     <>
       <li>
-        <a>instructor home</a>
+        <ActiveLink to="/dashboard/add-class">
+          <MdAddBox /> Add a class
+        </ActiveLink>
+      </li>
+      <li>
+        <ActiveLink to="/dashboard/my-classes">
+          <RiFileUserFill /> My Classes
+        </ActiveLink>
       </li>
     </>
   );

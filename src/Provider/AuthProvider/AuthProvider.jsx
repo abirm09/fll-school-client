@@ -38,7 +38,9 @@ const AuthProvider = ({ children }) => {
   //log out
   const logOut = async () => {
     return signOut(auth)
-      .then(() => {})
+      .then(() => {
+        localStorage.removeItem("access_token");
+      })
       .catch(err => console.log(err));
   };
   //observe user

@@ -4,13 +4,17 @@ import ClassCard from "./classCard";
 import { useRole } from "../../Hooks/useRole";
 const Classes = () => {
   const [classes, setClasses] = useState([]);
-  const role = useRole();
+  const { role, isRoleLoading } = useRole();
+  console.log(role);
   const url = baseUrl;
   useEffect(() => {
     fetch(`${url}classes-all`)
       .then(res => res.json())
       .then(data => setClasses(data));
   }, [url]);
+  if (isRoleLoading) {
+    return <h2>Loading...</h2>;
+  }
   return (
     <section>
       <div className="cs-container">

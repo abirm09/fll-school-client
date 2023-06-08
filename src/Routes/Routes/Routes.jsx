@@ -12,6 +12,9 @@ import WelcomePage from "../../Pages/DashBoard/WelcomePage/WelcomePage";
 import MySelectedClasses from "../../Pages/DashBoard/User/MySelectedClasses/MySelectedClasses";
 import MyEnrolledClasses from "../../Pages/DashBoard/User/MyEnrolledClasses/MyEnrolledClasses";
 import PaymentHistory from "../../Pages/DashBoard/User/PaymentHistory/PaymentHistory";
+import AddClass from "../../Pages/DashBoard/Instructor/AddClass/AddClass";
+import MyClasses from "../../Pages/DashBoard/Instructor/MyClasses/MyClasses";
+import InstructorRoute from "../InstructorRoute/InstructorRoute";
 
 const route = createBrowserRouter([
   {
@@ -64,6 +67,23 @@ const route = createBrowserRouter([
       {
         path: "/dashboard/payment-history",
         element: <PaymentHistory />,
+      },
+      // instructors
+      {
+        path: "/dashboard/add-class",
+        element: (
+          <InstructorRoute>
+            <AddClass />
+          </InstructorRoute>
+        ),
+      },
+      {
+        path: "/dashboard/my-classes",
+        element: (
+          <InstructorRoute>
+            <MyClasses />
+          </InstructorRoute>
+        ),
       },
     ],
   },
