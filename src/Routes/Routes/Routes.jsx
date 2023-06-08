@@ -8,6 +8,10 @@ import Login from "../../Components/Login/Login";
 import Register from "../../Components/Register/Register";
 import Dashboard from "../../Layouts/Dashboard";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import WelcomePage from "../../Pages/DashBoard/WelcomePage/WelcomePage";
+import MySelectedClasses from "../../Pages/DashBoard/User/MySelectedClasses/MySelectedClasses";
+import MyEnrolledClasses from "../../Pages/DashBoard/User/MyEnrolledClasses/MyEnrolledClasses";
+import PaymentHistory from "../../Pages/DashBoard/User/PaymentHistory/PaymentHistory";
 
 const route = createBrowserRouter([
   {
@@ -44,6 +48,24 @@ const route = createBrowserRouter([
         <Dashboard />
       </PrivateRoute>
     ),
+    children: [
+      {
+        path: "/dashboard/home",
+        element: <WelcomePage />,
+      },
+      {
+        path: "/dashboard/my-selected-classes",
+        element: <MySelectedClasses />,
+      },
+      {
+        path: "/dashboard/my-enrolled-classes",
+        element: <MyEnrolledClasses />,
+      },
+      {
+        path: "/dashboard/payment-history",
+        element: <PaymentHistory />,
+      },
+    ],
   },
 ]);
 

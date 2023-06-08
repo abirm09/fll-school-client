@@ -35,7 +35,11 @@ const ClassCard = ({ item, role }) => {
     };
     axiosSecure
       .post("/select-item", studentInfo)
-      .then(res => console.log(res.data))
+      .then(res => {
+        if (res.data.acknowledged) {
+          Swal.fire("success!", "Selected successfully!", "success");
+        }
+      })
       .catch(err => console.log(err));
   };
   return (

@@ -40,7 +40,7 @@ const NavBar = () => {
       ) : (
         <>
           <li>
-            <ActiveLink to="/dashboard">Dashboard</ActiveLink>
+            <ActiveLink to="/dashboard/home">Dashboard</ActiveLink>
           </li>
           <li className="p-0">
             <details className="dropdown">
