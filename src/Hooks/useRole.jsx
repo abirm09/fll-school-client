@@ -9,6 +9,5 @@ export const useRole = () => {
     const res = await axiosSecure.get(`/role?email=${user?.email}`);
     return res.data;
   });
-  console.log(role);
   return role;
 };

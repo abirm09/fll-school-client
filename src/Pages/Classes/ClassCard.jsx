@@ -1,10 +1,26 @@
 import { useAuth } from "../../Hooks/useAuth";
+import { useAxiosSecure } from "../../Hooks/useAxiosSecure";
 import { useRole } from "../../Hooks/useRole";
 
 const ClassCard = ({ item }) => {
-  const { darkTheme } = useAuth();
-  const { classImage, instructorName, totalSeats, bookedSeats, price } = item;
+  const { darkTheme, user } = useAuth();
+  const { _id, classImage, instructorName, totalSeats, bookedSeats, price } =
+    item;
+  const [axiosSecure] = useAxiosSecure();
   const role = useRole();
+  const handleSelect = id => {
+    const studentInfo = {
+      studentName: user.displayName,
+      studentEmail: user?.email,
+      classId: id,
+      nameOfClass: item.className,
+      price,
+    };
+    axiosSecure
+      .post("/select-item", studentInfo)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
+  };
   return (
     <div
       className={`${
@@ -23,9 +39,14 @@ const ClassCard = ({ item }) => {
         <p className="text-xl font-bold">Price : ${price}</p>
         <div>
           <button
+            onClick={() => handleSelect(_id)}
             className="btn btn-primary"
             disabled={
-              role == "admin" || totalSeats - bookedSeats <= 0 ? true : false
+              role == "admin" ||
+              role == "instructor" ||
+              totalSeats - bookedSeats <= 0
+                ? true
+                : false
             }
           >
             Select
