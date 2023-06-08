@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
   };
 
   //log out
-  const logOut = () => {
+  const logOut = async () => {
     return signOut(auth)
       .then(() => {})
       .catch(err => console.log(err));

@@ -1,13 +1,11 @@
 import { useAuth } from "../../Hooks/useAuth";
 import { useAxiosSecure } from "../../Hooks/useAxiosSecure";
-import { useRole } from "../../Hooks/useRole";
 
-const ClassCard = ({ item }) => {
+const ClassCard = ({ item, role }) => {
   const { darkTheme, user } = useAuth();
   const { _id, classImage, instructorName, totalSeats, bookedSeats, price } =
     item;
   const [axiosSecure] = useAxiosSecure();
-  const role = useRole();
   const handleSelect = id => {
     const studentInfo = {
       studentName: user.displayName,
