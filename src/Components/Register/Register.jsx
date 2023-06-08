@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { updateProfile } from "firebase/auth";
 import { useAuth } from "../../Hooks/useAuth";
+import { baseUrl } from "../../Hooks/useAxiosSecure";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
@@ -22,7 +23,21 @@ const Register = () => {
         updateUser(res.user, data.name, data.photoURL)
           .then(() => {})
           .catch(err => console.log(err));
-        console.log(res.user);
+        const userInfo = {
+          name: data.name,
+          email: data.email,
+          image: data.photoURL,
+        };
+        fetch(`${baseUrl}add-user`, {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        })
+          .then(res => res.json())
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
       })
       .catch(err => setLogInErr(err.message.split("/")[1].replace(")", "")));
   };

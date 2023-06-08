@@ -7,7 +7,6 @@ const Instructors = () => {
     const res = await axiosSecure.get("/instructor");
     return res.data;
   });
-  console.log(instructors);
   return (
     <section>
       <div className="cs-container">

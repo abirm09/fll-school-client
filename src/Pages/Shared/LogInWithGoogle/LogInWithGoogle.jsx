@@ -1,10 +1,27 @@
 import { useAuth } from "../../../Hooks/useAuth";
+import { baseUrl } from "../../../Hooks/useAxiosSecure";
 
 const LogInWithGoogle = () => {
   const { googleLogin } = useAuth();
   const handleGoogleLogin = () => {
     googleLogin()
-      .then(res => console.log(res.user))
+      .then(res => {
+        const userInfo = {
+          name: res.user.displayName,
+          email: res.user.email,
+          image: res.user.photoURL,
+        };
+        fetch(`${baseUrl}add-user`, {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        })
+          .then(res => res.json())
+          .then(res => console.log(res))
+          .catch(err => console.log(err));
+      })
       .catch(err => console.log(err));
   };
   return (

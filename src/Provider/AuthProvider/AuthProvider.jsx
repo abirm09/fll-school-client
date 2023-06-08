@@ -59,7 +59,6 @@ const AuthProvider = ({ children }) => {
       return unsubscribe();
     };
   }, [auth]);
-  console.log(darkTheme);
   const data = {
     createAccount,
     googleLogin,
