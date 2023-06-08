@@ -8,7 +8,6 @@ const PopularClasses = () => {
     const res = await axiosSecure.get("/classes-limit");
     return res.data;
   });
-  console.log(classes);
   return (
     <section className="pt-20">
       <div className="cs-container">

@@ -48,7 +48,7 @@ const NavBar = () => {
                 <img
                   src={user?.photoURL}
                   alt="user profile"
-                  className="p-0 rounded-full"
+                  className="p-0 rounded-full w-16 h-16"
                 />
               </summary>
               <ul className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52 z-10">
