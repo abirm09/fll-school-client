@@ -2,14 +2,19 @@ import { useState } from "react";
 import { AiOutlineMail } from "react-icons/ai";
 import { FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import LogInWithGoogle from "../../Pages/Shared/LogInWithGoogle/LogInWithGoogle";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [showPass, setShowPass] = useState(false);
   const [logInErr, setLogInErr] = useState("");
   const { loginWIthEmail } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location?.state?.from?.pathname || "/";
+  console.log(location);
   const {
     register,
     handleSubmit,
@@ -18,7 +23,10 @@ const Login = () => {
   const onSubmit = data => {
     setLogInErr("");
     loginWIthEmail(data.email, data.password)
-      .then(res => console.log(res.user))
+      .then(() => {
+        Swal.fire("Success!", "Logged in successful", "success");
+        navigate(from);
+      })
       .catch(err => setLogInErr(err.message.split("/")[1].replace(")", "")));
   };
   return (

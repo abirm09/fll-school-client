@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../Hooks/useAuth";
 import { baseUrl } from "../../../Hooks/useAxiosSecure";
 
 const LogInWithGoogle = () => {
   const { googleLogin } = useAuth();
+  const navigate = useNavigate();
   const handleGoogleLogin = () => {
     googleLogin()
       .then(res => {
@@ -19,7 +21,9 @@ const LogInWithGoogle = () => {
           body: JSON.stringify(userInfo),
         })
           .then(res => res.json())
-          .then(res => console.log(res))
+          .then(() => {
+            navigate("/");
+          })
           .catch(err => console.log(err));
       })
       .catch(err => console.log(err));

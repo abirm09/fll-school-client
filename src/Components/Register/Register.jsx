@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AiOutlineLink, AiOutlineMail } from "react-icons/ai";
 import { FaLock, FaEye, FaEyeSlash, FaUserAlt } from "react-icons/fa";
 import LogInWithGoogle from "../../Pages/Shared/LogInWithGoogle/LogInWithGoogle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { updateProfile } from "firebase/auth";
 import { useAuth } from "../../Hooks/useAuth";
@@ -12,6 +12,7 @@ const Register = () => {
   const [showPass, setShowPass] = useState(false);
   const { createAccount } = useAuth();
   const [logInErr, setLogInErr] = useState("");
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -36,7 +37,9 @@ const Register = () => {
           body: JSON.stringify(userInfo),
         })
           .then(res => res.json())
-          .then(res => console.log(res))
+          .then(() => {
+            navigate("/");
+          })
           .catch(err => console.log(err));
       })
       .catch(err => setLogInErr(err.message.split("/")[1].replace(")", "")));

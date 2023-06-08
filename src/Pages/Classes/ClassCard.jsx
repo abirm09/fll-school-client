@@ -1,12 +1,31 @@
+import Swal from "sweetalert2";
 import { useAuth } from "../../Hooks/useAuth";
 import { useAxiosSecure } from "../../Hooks/useAxiosSecure";
+import { useNavigate } from "react-router-dom";
 
 const ClassCard = ({ item, role }) => {
   const { darkTheme, user } = useAuth();
   const { _id, classImage, instructorName, totalSeats, bookedSeats, price } =
     item;
   const [axiosSecure] = useAxiosSecure();
+  const navigate = useNavigate();
   const handleSelect = id => {
+    if (!user) {
+      Swal.fire({
+        title: "Please log in first.",
+        text: "Go to log in page.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login",
+      }).then(result => {
+        if (result.isConfirmed) {
+          navigate("/login");
+        }
+      });
+      return;
+    }
     const studentInfo = {
       studentName: user.displayName,
       studentEmail: user?.email,

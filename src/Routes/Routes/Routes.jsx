@@ -6,6 +6,8 @@ import Instructors from "../../Pages/Instructors/Instructors";
 import Classes from "../../Pages/Classes/Classes";
 import Login from "../../Components/Login/Login";
 import Register from "../../Components/Register/Register";
+import Dashboard from "../../Layouts/Dashboard";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const route = createBrowserRouter([
   {
@@ -34,6 +36,14 @@ const route = createBrowserRouter([
         element: <Register />,
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
   },
 ]);
 
