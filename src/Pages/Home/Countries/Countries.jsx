@@ -7,7 +7,6 @@ const Countries = () => {
       .then(res => res.json())
       .then(data => setCountries(data));
   }, []);
-  console.log(countries);
   return (
     <section>
       <div className="cs-container">

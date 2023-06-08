@@ -17,6 +17,9 @@ const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [darkTheme, setDarkTheme] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
   //create user with email and pass
   const createAccount = (email, password) => {
     setLoading(true);
@@ -56,6 +59,7 @@ const AuthProvider = ({ children }) => {
       return unsubscribe();
     };
   }, [auth]);
+  console.log(darkTheme);
   const data = {
     createAccount,
     googleLogin,
@@ -63,6 +67,8 @@ const AuthProvider = ({ children }) => {
     user,
     logOut,
     loading,
+    darkTheme,
+    setDarkTheme,
   };
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };

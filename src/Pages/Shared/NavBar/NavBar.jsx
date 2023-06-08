@@ -11,13 +11,14 @@ import { FiLogOut } from "react-icons/fi";
 import { BsFillGearFill } from "react-icons/bs";
 
 const NavBar = () => {
-  const { user, logOut } = useAuth();
+  const { user, logOut, setDarkTheme } = useAuth();
   const retrieveTheme = localStorage.getItem("theme") === "dark";
   const [isDark, setIsDark] = useState(retrieveTheme);
 
   const handleTheme = () => {
     setIsDark(!isDark);
     setTheme(!isDark);
+    setDarkTheme(!isDark);
   };
   const navLinks = (
     <>
@@ -73,7 +74,7 @@ const NavBar = () => {
         </>
       )}
 
-      <button onClick={handleTheme} className="btn btn-accent ms-5">
+      <button onClick={handleTheme} className="btn btn-accent ms-5 max-w-fit">
         {isDark ? (
           <img src={sun} alt="Sun" className="w-6 h-6" />
         ) : (
@@ -105,7 +106,7 @@ const NavBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 font-poppins font-semibold"
+              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 font-poppins font-semibold  z-10"
             >
               {navLinks}
             </ul>
