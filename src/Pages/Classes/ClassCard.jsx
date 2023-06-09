@@ -38,6 +38,13 @@ const ClassCard = ({ item, role }) => {
       .then(res => {
         if (res.data.acknowledged) {
           Swal.fire("success!", "Selected successfully!", "success");
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "You have already enrolled this class.",
+            footer: "Thank You.",
+          });
         }
       })
       .catch(err => console.log(err));

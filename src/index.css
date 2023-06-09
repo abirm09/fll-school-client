@@ -41,3 +41,7 @@
 .add-class-form {
     @apply flex justify-center gap-5
 }
+
+.role-route-title {
+    @apply cs-text-gradient font-bold font-poppins text-2xl pb-3 border-b-2 inline-block
+}

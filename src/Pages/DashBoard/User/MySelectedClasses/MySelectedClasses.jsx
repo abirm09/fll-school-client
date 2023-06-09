@@ -38,6 +38,7 @@ const MySelectedClasses = () => {
   };
   return (
     <div className="p-2 md:p-10">
+      <h2 className="role-route-title">Selected classes</h2>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

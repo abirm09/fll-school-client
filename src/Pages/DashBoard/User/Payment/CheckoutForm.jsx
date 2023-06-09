@@ -67,6 +67,7 @@ const CheckoutForm = ({ id }) => {
       );
       const paymentInfo = {
         id: id,
+        nameOfClass: itemInfo.nameOfClass,
         price: paymentIntent.amount / 100,
         txID: paymentIntent.id,
         email: user?.email,
