@@ -1,25 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
-import { useAxiosSecure } from "../../../../Hooks/useAxiosSecure";
-import { useAuth } from "../../../../Hooks/useAuth";
+import useEnrolledClasses from "../../../../Hooks/useEnrolledClasses";
 
 const MyEnrolledClasses = () => {
-  const { user, loading } = useAuth();
-  const [axiosSecure] = useAxiosSecure();
-  const { data: enrolledClasses = [] } = useQuery({
-    queryKey: ["enrolled-classes"],
-    enabled: !loading,
-    queryFn: async () => {
-      const res = await axiosSecure.get(
-        `/enrolled-classes?email=${user?.email}`
-      );
-      return res.data;
-    },
-  });
-  console.log(enrolledClasses);
+  const { enrolledClasses } = useEnrolledClasses();
   return (
     <div className="p-2 md:p-5">
       <h2 className="role-route-title ">Your enrolled classes</h2>
       <div>
+        <h2 className="font-poppins mt-3 font-bold">
+          Total enrolled classes : {enrolledClasses.length}
+        </h2>
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
@@ -28,7 +17,6 @@ const MyEnrolledClasses = () => {
                 <th></th>
                 <th>Name</th>
                 <th>Price</th>
-                <th>Favorite Color</th>
               </tr>
             </thead>
             <tbody>
