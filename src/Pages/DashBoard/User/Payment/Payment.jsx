@@ -5,14 +5,23 @@ import CheckoutForm from "./CheckoutForm";
 
 const Payment = () => {
   const { id } = useParams();
-  //   TODO: PRovide publishable key
   const stripePromise = loadStripe(import.meta.env.VITE_payment_API_secret);
   return (
     <div>
-      <h2>id : {id}</h2>
-      <Elements stripe={stripePromise}>
-        <CheckoutForm id={id} />
-      </Elements>
+      <div className="max-w-md mx-auto">
+        <div className="py-10 font-poppins">
+          <h2 className="font-bold text-2xl cs-text-gradient">
+            Card information.
+          </h2>
+          <p className="text-xs">
+            Bye your classes with confidence on our secure payment page. Enjoy a
+            hassle-free checkout process, knowing your information is protected.
+          </p>
+        </div>
+        <Elements stripe={stripePromise}>
+          <CheckoutForm id={id} />
+        </Elements>
+      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useAxiosSecure } from "../../../../Hooks/useAxiosSecure";
 import { useAuth } from "../../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import "./Checkout.css";
 
 const CheckoutForm = ({ id }) => {
   const { user } = useAuth();
@@ -12,10 +13,17 @@ const CheckoutForm = ({ id }) => {
   const [axiosSecure] = useAxiosSecure();
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
+  const [itemInfo, setItemInfo] = useState({});
   useEffect(() => {
     axiosSecure
       .post(`/payment-intent?id=${id}`)
       .then(res => setClientSecret(res.data.clientSecret));
+  }, [axiosSecure, id]);
+  useEffect(() => {
+    axiosSecure
+      .get(`/selected-item?id=${id}`)
+      .then(data => setItemInfo(data.data))
+      .catch(err => console.log(err));
   }, [axiosSecure, id]);
   const handleSubmit = async event => {
     event.preventDefault();
@@ -27,7 +35,6 @@ const CheckoutForm = ({ id }) => {
     if (card === null) {
       return;
     }
-    console.log(card);
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
@@ -49,46 +56,63 @@ const CheckoutForm = ({ id }) => {
         },
       });
     if (confirmErr) {
-      console.log(confirmErr);
+      setCardError(confirmErr.message);
     }
-    console.log(paymentIntent);
     setProcessing(false);
-    if (paymentIntent.status === "succeeded") {
+    if (paymentIntent?.status === "succeeded") {
       Swal.fire(
         "Payment successful!",
         `Transaction ID : ${paymentIntent.id}`,
         "success"
       );
+      const paymentInfo = {
+        id: id,
+        price: paymentIntent.amount / 100,
+        txID: paymentIntent.id,
+        email: user?.email,
+        classId: itemInfo?.classId,
+      };
+      axiosSecure
+        .post("/enrolled-classes", paymentInfo)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err));
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <CardElement
-        options={{
-          style: {
-            base: {
-              fontSize: "16px",
-              color: "#424770",
-              "::placeholder": {
-                color: "#aab7c4",
+    <>
+      <div className="my-4 font-poppins">
+        <h2 className="font-bold">Name : {itemInfo?.studentName}</h2>
+        <p>Price : ${itemInfo?.price}</p>
+        <p>Course name : {itemInfo?.nameOfClass}</p>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <CardElement
+          options={{
+            style: {
+              base: {
+                fontSize: "16px",
+                color: "#424770",
+                "::placeholder": {
+                  color: "#aab7c4",
+                },
+              },
+              invalid: {
+                color: "#9e2146",
               },
             },
-            invalid: {
-              color: "#9e2146",
-            },
-          },
-        }}
-      />
-      {cardError && <p className="font-bold text-red-600">{cardError}</p>}
-      <button
-        className="btn"
-        type="submit"
-        disabled={!stripe || !clientSecret || processing}
-      >
-        Pay
-      </button>
-    </form>
+          }}
+        />
+        {cardError && <p className="font-bold text-red-600">{cardError}</p>}
+        <button
+          className="cs-gradient-btn w-full my-3"
+          type="submit"
+          disabled={!stripe || !clientSecret || processing}
+        >
+          Pay
+        </button>
+      </form>
+    </>
   );
 };
 
