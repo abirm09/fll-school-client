@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useAxiosSecure } from "../../../../Hooks/useAxiosSecure";
 import { useAuth } from "../../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MySelectedClasses = () => {
   const { user } = useAuth();
@@ -44,6 +45,7 @@ const MySelectedClasses = () => {
             <tr>
               <th></th>
               <th>Class Name</th>
+              <th>Price</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -52,8 +54,11 @@ const MySelectedClasses = () => {
               <tr key={item._id}>
                 <td>{index + 1}</td>
                 <td>{item.nameOfClass}</td>
+                <td>{item.price}</td>
                 <td>
-                  <button className="cs-gradient-btn">Pay</button>
+                  <Link to={`/dashboard/payment/${item._id}`}>
+                    <button className="cs-gradient-btn">Pay</button>
+                  </Link>
                   <button
                     className="btn btn-error ml-5"
                     onClick={() => handleDelete(item._id)}

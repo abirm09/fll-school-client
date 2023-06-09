@@ -5,7 +5,6 @@ import { useRole } from "../../Hooks/useRole";
 const Classes = () => {
   const [classes, setClasses] = useState([]);
   const { role, isRoleLoading } = useRole();
-  console.log(role);
   const url = baseUrl;
   useEffect(() => {
     fetch(`${url}classes-all`)

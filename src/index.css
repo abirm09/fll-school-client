@@ -36,3 +36,8 @@
 .form-error {
     @apply font-poppins text-red-500 font-semibold
 }
+
+/* form-control */
+.add-class-form {
+    @apply flex justify-center gap-5
+}

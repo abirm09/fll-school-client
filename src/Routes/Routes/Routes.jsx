@@ -15,6 +15,7 @@ import PaymentHistory from "../../Pages/DashBoard/User/PaymentHistory/PaymentHis
 import AddClass from "../../Pages/DashBoard/Instructor/AddClass/AddClass";
 import MyClasses from "../../Pages/DashBoard/Instructor/MyClasses/MyClasses";
 import InstructorRoute from "../InstructorRoute/InstructorRoute";
+import Payment from "../../Pages/DashBoard/User/Payment/Payment";
 
 const route = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const route = createBrowserRouter([
       {
         path: "/dashboard/payment-history",
         element: <PaymentHistory />,
+      },
+      {
+        path: "/dashboard/payment/:id",
+        element: <Payment />,
       },
       // instructors
       {
