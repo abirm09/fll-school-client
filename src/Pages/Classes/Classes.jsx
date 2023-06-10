@@ -1,11 +1,23 @@
 import ClassCard from "./classCard";
 import { useRole } from "../../Hooks/useRole";
-import useClasses from "../../Hooks/useClasses";
+import { useQuery } from "@tanstack/react-query";
+import { useAxiosSecure } from "../../Hooks/useAxiosSecure";
 const Classes = () => {
   const { role, isRoleLoading } = useRole();
-  const { classes } = useClasses();
+  const [axiosSecure] = useAxiosSecure();
+  const { data: classes = [] } = useQuery({
+    queryKey: ["classes-approved"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/classes-all-approved");
+      return res.data;
+    },
+  });
   if (isRoleLoading) {
-    return <h2>Loading...</h2>;
+    return (
+      <div className="flex justify-center">
+        <progress className="progress w-56"></progress>
+      </div>
+    );
   }
   return (
     <section>

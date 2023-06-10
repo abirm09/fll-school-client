@@ -1,12 +1,10 @@
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../../Hooks/useAuth";
 import { useRole } from "../../Hooks/useRole";
 
-const InstructorRoute = ({ children }) => {
+const AdminRoute = ({ children }) => {
   const { role, isRoleLoading } = useRole();
-  const { user, logOut, loading } = useAuth();
-  const location = useLocation();
-
+  const { logOut, loading, user } = useAuth();
   if (isRoleLoading || loading) {
     return (
       <div className="flex justify-center">
@@ -14,12 +12,12 @@ const InstructorRoute = ({ children }) => {
       </div>
     );
   }
-  if (user && role == "instructor") {
+  if (user && role === "admin") {
     return children;
   } else {
     logOut();
-    return <Navigate to="/login" state={{ from: location }} />;
+    return <Navigate to="/login"></Navigate>;
   }
 };
 
-export default InstructorRoute;
+export default AdminRoute;
