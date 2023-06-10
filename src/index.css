@@ -42,6 +42,10 @@
     @apply flex justify-center gap-5
 }
 
+.add-class-form div {
+    @apply flex-grow
+}
+
 .role-route-title {
-    @apply cs-text-gradient font-bold font-poppins md:text-2xl pb-3 border-b-2 inline-block
+    @apply cs-text-gradient font-bold font-poppins text-2xl pb-3 border-b-2 inline-block
 }

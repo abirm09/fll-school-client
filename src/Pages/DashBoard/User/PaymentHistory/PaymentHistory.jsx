@@ -2,7 +2,6 @@ import useEnrolledClasses from "../../../../Hooks/useEnrolledClasses";
 
 const PaymentHistory = () => {
   const { enrolledClasses } = useEnrolledClasses();
-  console.log(enrolledClasses);
   return (
     <div className="p-2 md:p-5 w-full overflow-x-hidden">
       <h2 className="role-route-title ">Your payment history</h2>
