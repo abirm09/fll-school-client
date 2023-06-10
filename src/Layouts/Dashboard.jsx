@@ -3,7 +3,7 @@ import NavBar from "../Pages/Shared/NavBar/NavBar";
 import logo from "../assets/logo.png";
 import { useRole } from "../Hooks/useRole";
 import ActiveLink from "../Components/ActiveLink/ActiveLink";
-import { FaHome, FaWallet } from "react-icons/fa";
+import { FaGraduationCap, FaHome, FaUsers, FaWallet } from "react-icons/fa";
 import { TbSelect } from "react-icons/tb";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { MdAddBox } from "react-icons/md";
@@ -32,7 +32,14 @@ const Dashboard = () => {
   const admin = (
     <>
       <li>
-        <a>Admin home</a>
+        <ActiveLink to="/dashboard/manage-classes">
+          <FaGraduationCap /> Manage classes
+        </ActiveLink>
+      </li>
+      <li>
+        <ActiveLink to="/dashboard/manage-users">
+          <FaUsers /> Manage users
+        </ActiveLink>
       </li>
     </>
   );

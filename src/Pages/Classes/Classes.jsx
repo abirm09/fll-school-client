@@ -1,16 +1,9 @@
-import { useEffect, useState } from "react";
-import { baseUrl } from "../../Hooks/useAxiosSecure";
 import ClassCard from "./classCard";
 import { useRole } from "../../Hooks/useRole";
+import useClasses from "../../Hooks/useClasses";
 const Classes = () => {
-  const [classes, setClasses] = useState([]);
   const { role, isRoleLoading } = useRole();
-  const url = baseUrl;
-  useEffect(() => {
-    fetch(`${url}classes-all`)
-      .then(res => res.json())
-      .then(data => setClasses(data));
-  }, [url]);
+  const { classes } = useClasses();
   if (isRoleLoading) {
     return <h2>Loading...</h2>;
   }
