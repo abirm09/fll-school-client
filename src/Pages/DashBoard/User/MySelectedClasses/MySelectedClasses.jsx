@@ -1,12 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import { useAxiosSecure } from "../../../../Hooks/useAxiosSecure";
+import { baseUrl, useAxiosSecure } from "../../../../Hooks/useAxiosSecure";
 import { useAuth } from "../../../../Hooks/useAuth";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MySelectedClasses = () => {
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
+  const navigate = useNavigate();
   const { data: selectedClasses = [], refetch: refetchSelectedClasses } =
     useQuery(["selected-classes"], async () => {
       const res = await axiosSecure.get(
@@ -14,6 +15,23 @@ const MySelectedClasses = () => {
       );
       return res.data;
     });
+  const handlePaymentRoute = (classId, itemId) => {
+    fetch(`${baseUrl}class-available-or-not?id=${classId}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.status) {
+          navigate(`/dashboard/payment/${itemId}`);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "No class available.",
+            footer: "All the class have been booked.",
+          });
+        }
+      })
+      .catch(err => console.log(err));
+  };
   const handleDelete = id => {
     Swal.fire({
       title: "Are you sure?",
@@ -57,9 +75,12 @@ const MySelectedClasses = () => {
                 <td>{item.nameOfClass}</td>
                 <td>{item.price}</td>
                 <td>
-                  <Link to={`/dashboard/payment/${item._id}`}>
-                    <button className="cs-gradient-btn">Pay</button>
-                  </Link>
+                  <button
+                    className="cs-gradient-btn"
+                    onClick={() => handlePaymentRoute(item.classId, item._id)}
+                  >
+                    Pay
+                  </button>
                   <button
                     className="btn btn-error ml-5"
                     onClick={() => handleDelete(item._id)}
