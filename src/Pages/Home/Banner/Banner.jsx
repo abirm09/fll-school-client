@@ -17,28 +17,6 @@ const Banner = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5 justify-center">
               <div className="space-y-5">
                 <h2 className="text-2xl md:text-5xl font-poppins font-bold cs-text-gradient">
-                  Increase your typing skills
-                </h2>
-                <p>
-                  From Local to Global: Empower Yourself with the Ability to
-                  Communicate Across Borders, Learn a New Language Today and
-                  Open the Doors to Endless Connections, Cultural Exchange, and
-                  International Opportunities.
-                </p>
-              </div>
-              <div>
-                <img
-                  src="https://i.ibb.co/BqX80HK/undraw-Typing-re-d4sq.png"
-                  alt="Communicate"
-                  className="max-w-lg w-full rounded-lg mx-auto"
-                />
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5 justify-center">
-              <div className="space-y-5">
-                <h2 className="text-2xl md:text-5xl font-poppins font-bold cs-text-gradient">
                   Communicate with the world
                 </h2>
                 <p>
@@ -76,6 +54,28 @@ const Banner = () => {
                 <img
                   src="https://i.ibb.co/JRV7335/undraw-Audio-conversation-re-3t38.png
 "
+                  alt="Communicate"
+                  className="max-w-lg w-full rounded-lg mx-auto"
+                />
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-5 justify-center">
+              <div className="space-y-5">
+                <h2 className="text-2xl md:text-5xl font-poppins font-bold cs-text-gradient">
+                  Increase your typing skills
+                </h2>
+                <p>
+                  From Local to Global: Empower Yourself with the Ability to
+                  Communicate Across Borders, Learn a New Language Today and
+                  Open the Doors to Endless Connections, Cultural Exchange, and
+                  International Opportunities.
+                </p>
+              </div>
+              <div>
+                <img
+                  src="https://i.ibb.co/BqX80HK/undraw-Typing-re-d4sq.png"
                   alt="Communicate"
                   className="max-w-lg w-full rounded-lg mx-auto"
                 />

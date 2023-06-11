@@ -14,7 +14,7 @@ const Countries = () => {
           {countries?.map(country => (
             <div
               key={country.id}
-              className="w-[170px] cs-bg-gradient p-3 cursor-pointer rounded-lg hover:scale-105 hover:-translate-y-2 transition-all"
+              className="md:w-[170px] w-[150px] cs-bg-gradient p-3 cursor-pointer rounded-lg hover:scale-105 hover:-translate-y-2 transition-all"
             >
               <img
                 src={country.image}

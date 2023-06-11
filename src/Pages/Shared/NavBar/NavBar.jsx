@@ -8,7 +8,7 @@ import sun from "../../../assets/svg/sun.svg";
 import moon from "../../../assets/svg/moon.svg";
 import { FaUserAlt } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
-import { BsFillGearFill } from "react-icons/bs";
+import { BsFillEnvelopeAtFill, BsFillGearFill } from "react-icons/bs";
 
 const NavBar = () => {
   const { user, logOut, setDarkTheme } = useAuth();
@@ -55,6 +55,11 @@ const NavBar = () => {
                 <li>
                   <a>
                     <FaUserAlt /> {user?.displayName}
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <BsFillEnvelopeAtFill /> {user?.email}
                   </a>
                 </li>
                 <li>
