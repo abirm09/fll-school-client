@@ -20,7 +20,7 @@ const Classes = () => {
     );
   }
   return (
-    <section>
+    <section className="mt-10">
       <div className="cs-container">
         <div className="flex justify-center flex-wrap gap-10">
           {classes.map(item => (

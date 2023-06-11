@@ -8,7 +8,7 @@ const Instructors = () => {
     return res.data;
   });
   return (
-    <section>
+    <section className="mt-10">
       <div className="cs-container">
         <div className="overflow-x-auto">
           <table className="table table-zebra font-poppins font-semibold">

@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import { BsFillEnvelopeAtFill, BsFillTelephoneFill } from "react-icons/bs";
+import { useAuth } from "../../../Hooks/useAuth";
 const Footer = () => {
+  const { user } = useAuth();
   return (
-    <section className="bg-slate-950 py-10">
-      <div className="cs-container text-white">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-5">
+    <section className="bg-base-300 py-10 mt-10">
+      <div className="cs-container">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-5 font-poppins">
           <div className="space-y-3 col-span-1 md:col-span-2">
             <Link to="/" className="btn btn-ghost">
               <img src={logo} alt="Logo" className="w-[150px] h-[50px]" />
@@ -107,12 +109,20 @@ const Footer = () => {
               Get started
             </h2>
             <div className="flex gap-3 justify-center">
-              <Link to="/login" className="btn btn-outline px-5">
-                Login
-              </Link>
-              <Link to="/register" className="cs-gradient-btn">
-                Register
-              </Link>
+              {user ? (
+                <Link to="/classes" className="cs-gradient-btn">
+                  Brows classes
+                </Link>
+              ) : (
+                <>
+                  <Link to="/login" className="btn btn-outline px-5">
+                    Login
+                  </Link>
+                  <Link to="/register" className="cs-gradient-btn">
+                    Register
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

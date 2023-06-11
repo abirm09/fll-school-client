@@ -9,7 +9,7 @@ const PopularClasses = () => {
     return res.data;
   });
   return (
-    <section className="pt-20">
+    <section className="mt-20 bg-base-200 pb-10">
       <div className="cs-container">
         <SectionTitle
           title="Trending now"

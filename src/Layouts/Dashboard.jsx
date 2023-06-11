@@ -70,11 +70,11 @@ const Dashboard = () => {
       <section className="cs-container">
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content">
+          <div className="drawer-content overflow-hidden">
             {/* Page content here */}
             <label
               htmlFor="my-drawer-2"
-              className="btn drawer-button lg:hidden"
+              className="btn drawer-button lg:hidden m-4"
             >
               Open drawer
             </label>

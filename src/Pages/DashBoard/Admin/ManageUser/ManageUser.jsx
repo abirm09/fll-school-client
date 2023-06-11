@@ -19,7 +19,7 @@ const ManageUser = () => {
       .catch(err => console.log(err));
   };
   return (
-    <div className="p-2 md:p-5">
+    <div className="p-2 md:p-5 overflow-auto">
       <h2 className="role-route-title ">Mange users</h2>
       <div className="mt-5">
         <div className="overflow-x-auto">
