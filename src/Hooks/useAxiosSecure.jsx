@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const baseUrl = "http://localhost:5000/";
+export const baseUrl = "https://fll-school-serer.vercel.app/";
 const axiosSecure = axios.create({
   baseURL: baseUrl,
 });
