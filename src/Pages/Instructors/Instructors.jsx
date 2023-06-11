@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useAxiosSecure } from "../../Hooks/useAxiosSecure";
+import SectionTitle from "../Shared/SectionTitle/SectionTitle";
 
 const Instructors = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -10,6 +11,7 @@ const Instructors = () => {
   return (
     <section className="mt-10">
       <div className="cs-container">
+        <SectionTitle title="Our instructors"></SectionTitle>
         <div className="overflow-x-auto">
           <table className="table table-zebra font-poppins font-semibold">
             {/* head */}

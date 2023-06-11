@@ -58,10 +58,10 @@ const MySelectedClasses = () => {
     <div className="p-2 md:p-10">
       <h2 className="role-route-title">Selected classes</h2>
       <div className="overflow-x-auto">
-        <table className="table">
+        <table className="table font-poppins">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="text-xl">
               <th></th>
               <th>Class Name</th>
               <th>Price</th>

@@ -6,10 +6,10 @@ const PaymentHistory = () => {
     <div className="p-2 md:p-5 w-full overflow-x-hidden">
       <h2 className="role-route-title ">Your payment history</h2>
       <div className="overflow-x-auto w-full">
-        <table className="table table-zebra">
+        <table className="table table-zebra font-poppins">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="text-xl">
               <th></th>
               <th>Class name</th>
               <th>txId</th>

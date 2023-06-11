@@ -51,7 +51,7 @@ const ManageClasses = () => {
         <h2 className="role-route-title ">All classes</h2>
         <div>
           <div className="overflow-x-auto">
-            <table className="table">
+            <table className="table font-poppins">
               {/* head */}
               <thead>
                 <tr>

@@ -12,6 +12,7 @@ const Register = () => {
   const [showPass, setShowPass] = useState(false);
   const { createAccount } = useAuth();
   const [logInErr, setLogInErr] = useState("");
+  const [confirmPassErr, setConfirmPassErr] = useState("");
   const navigate = useNavigate();
   const {
     register,
@@ -19,6 +20,12 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = data => {
+    setConfirmPassErr("");
+    if (data.confirmPassword !== data.password) {
+      return setConfirmPassErr(
+        "Password and confirm password did not matched."
+      );
+    }
     createAccount(data?.email, data?.password)
       .then(res => {
         updateUser(res.user, data.name, data.photoURL)
@@ -150,9 +157,14 @@ const Register = () => {
                       </span>
                     </div>
                   </div>
-                  {errors.password?.type === "required" && (
+                  {errors.confirmPassword?.type === "required" && (
                     <p role="alert" className="form-error">
                       Confirm Password is required
+                    </p>
+                  )}
+                  {confirmPassErr && (
+                    <p role="alert" className="form-error">
+                      {confirmPassErr}
                     </p>
                   )}
                   <div className="cs-form-control">

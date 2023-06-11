@@ -10,10 +10,10 @@ const MyEnrolledClasses = () => {
           Total enrolled classes : {enrolledClasses.length}
         </h2>
         <div className="overflow-x-auto">
-          <table className="table">
+          <table className="table font-poppins">
             {/* head */}
             <thead>
-              <tr>
+              <tr className="text-xl">
                 <th></th>
                 <th>Name</th>
                 <th>Price</th>
@@ -21,7 +21,7 @@ const MyEnrolledClasses = () => {
             </thead>
             <tbody>
               {enrolledClasses.map((item, index) => (
-                <tr key={item._id} className="font-poppins font-semibold">
+                <tr key={item._id} className="font-semibold">
                   <td>{index + 1}</td>
                   <td>{item.nameOfClass}</td>
                   <td>{item.price}</td>

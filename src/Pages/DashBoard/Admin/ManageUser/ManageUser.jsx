@@ -25,7 +25,7 @@ const ManageUser = () => {
         <div className="overflow-x-auto">
           <table className="table font-poppins">
             <thead>
-              <tr>
+              <tr className="text-xl">
                 <th></th>
                 <th>Image</th>
                 <th>Name</th>

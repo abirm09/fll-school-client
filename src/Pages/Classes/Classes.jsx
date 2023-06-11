@@ -2,6 +2,7 @@ import ClassCard from "./classCard";
 import { useRole } from "../../Hooks/useRole";
 import { useQuery } from "@tanstack/react-query";
 import { useAxiosSecure } from "../../Hooks/useAxiosSecure";
+import SectionTitle from "../Shared/SectionTitle/SectionTitle";
 const Classes = () => {
   const { role, isRoleLoading } = useRole();
   const [axiosSecure] = useAxiosSecure();
@@ -22,6 +23,7 @@ const Classes = () => {
   return (
     <section className="mt-10">
       <div className="cs-container">
+        <SectionTitle title="Our instructors"></SectionTitle>
         <div className="flex justify-center flex-wrap gap-10">
           {classes.map(item => (
             <ClassCard key={item._id} item={item} role={role} />

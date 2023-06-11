@@ -51,13 +51,13 @@ const NavBar = () => {
                   className="p-0 rounded-full w-16 h-16"
                 />
               </summary>
-              <ul className="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52 z-10">
-                <li>
+              <ul className="p-2 shadow menu dropdown-content bg-base-100 rounded-box  z-10">
+                <li className="pointer-events-none">
                   <a>
                     <FaUserAlt /> {user?.displayName}
                   </a>
                 </li>
-                <li>
+                <li className="pointer-events-none">
                   <a>
                     <BsFillEnvelopeAtFill /> {user?.email}
                   </a>
@@ -79,7 +79,7 @@ const NavBar = () => {
         </>
       )}
 
-      <button onClick={handleTheme} className="btn btn-accent ms-5 max-w-fit">
+      <button onClick={handleTheme} className="cs-gradient-btn ms-5 max-w-fit">
         {isDark ? (
           <img src={sun} alt="Sun" className="w-6 h-6" />
         ) : (
