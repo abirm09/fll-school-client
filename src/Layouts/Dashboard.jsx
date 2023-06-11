@@ -8,6 +8,7 @@ import { TbSelect } from "react-icons/tb";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import { MdAddBox } from "react-icons/md";
 import { RiFileUserFill } from "react-icons/ri";
+import Footer from "../Pages/Shared/Footer/Footer";
 const Dashboard = () => {
   const { role } = useRole();
   const user = (
@@ -97,6 +98,7 @@ const Dashboard = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };

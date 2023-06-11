@@ -11,7 +11,7 @@ const Instructors = () => {
     <section>
       <div className="cs-container">
         <div className="overflow-x-auto">
-          <table className="table table-zebra">
+          <table className="table table-zebra font-poppins font-semibold">
             {/* head */}
             <thead>
               <tr className="text-base">

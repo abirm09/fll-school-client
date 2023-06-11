@@ -13,9 +13,8 @@ const ManageUser = () => {
   const changeRole = (id, role) => {
     axiosSecure
       .post(`/change-user-role?id=${id}&&role=${role}`)
-      .then(res => {
+      .then(() => {
         refetch();
-        console.log(res.data);
       })
       .catch(err => console.log(err));
   };

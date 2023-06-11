@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import NavBar from "../Pages/Shared/NavBar/NavBar";
 import { useAuth } from "../Hooks/useAuth";
 import logo from "../assets/logo.png";
+import Footer from "../Pages/Shared/Footer/Footer";
 const Main = () => {
   const { loading } = useAuth();
   if (loading) {
@@ -15,6 +16,7 @@ const Main = () => {
     <>
       <NavBar />
       <Outlet />
+      <Footer />
     </>
   );
 };

@@ -49,3 +49,16 @@
 .role-route-title {
     @apply cs-text-gradient font-bold font-poppins text-2xl pb-3 border-b-2 inline-block
 }
+
+/* footer */
+.footer-social {
+    @apply flex gap-5
+}
+
+.footer-social li {
+    @apply rounded-full relative h-8 w-8
+}
+
+.footer-social li a img {
+    @apply rounded-full absolute w-full h-full
+}
