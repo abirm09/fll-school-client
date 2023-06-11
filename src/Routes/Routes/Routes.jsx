@@ -19,6 +19,7 @@ import Payment from "../../Pages/DashBoard/User/Payment/Payment";
 import ManageClasses from "../../Pages/DashBoard/Admin/ManageClasses/ManageClasses";
 import ManageUser from "../../Pages/DashBoard/Admin/ManageUser/ManageUser";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import StudentRoute from "../StudentRoute/StudentRoute";
 
 const route = createBrowserRouter([
   {
@@ -62,19 +63,35 @@ const route = createBrowserRouter([
       },
       {
         path: "/dashboard/my-selected-classes",
-        element: <MySelectedClasses />,
+        element: (
+          <StudentRoute>
+            <MySelectedClasses />
+          </StudentRoute>
+        ),
       },
       {
         path: "/dashboard/my-enrolled-classes",
-        element: <MyEnrolledClasses />,
+        element: (
+          <StudentRoute>
+            <MyEnrolledClasses />
+          </StudentRoute>
+        ),
       },
       {
         path: "/dashboard/payment-history",
-        element: <PaymentHistory />,
+        element: (
+          <StudentRoute>
+            <PaymentHistory />
+          </StudentRoute>
+        ),
       },
       {
         path: "/dashboard/payment/:id",
-        element: <Payment />,
+        element: (
+          <StudentRoute>
+            <Payment />
+          </StudentRoute>
+        ),
       },
       // instructors
       {
