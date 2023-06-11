@@ -92,6 +92,11 @@ const MySelectedClasses = () => {
             ))}
           </tbody>
         </table>
+        {!selectedClasses.length && (
+          <p className="text-center font-bold font-poppins py-3 text-error">
+            You haven&apos;t selected any classes.
+          </p>
+        )}
       </div>
     </div>
   );
