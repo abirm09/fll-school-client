@@ -104,7 +104,11 @@ const route = createBrowserRouter([
       },
       {
         path: "/dashboard/manage-users",
-        element: <ManageUser />,
+        element: (
+          <AdminRoute>
+            <ManageUser />
+          </AdminRoute>
+        ),
       },
     ],
   },

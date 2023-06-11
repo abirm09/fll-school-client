@@ -33,8 +33,7 @@ const ManageClasses = () => {
   const handleDeny = id => {
     axiosSecure
       .post(`/deny-a-post?id=${id}`)
-      .then(res => {
-        console.log(res);
+      .then(() => {
         refetch();
       })
       .catch(err => console.log(err));
