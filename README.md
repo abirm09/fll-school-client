@@ -44,3 +44,16 @@ Fll-School is a full-stack web application. There are lots of functionalities in
 - React icons
 - Sweetalert2
 - Swiper
+
+## How to run this project
+
+Here i used firebase authentication. So for running this project on your local computer you will need to create a firebase project and the projects config. Set all the configuration on a .env.local file. Create the .evn.local file on the root directory. Write the firebase config like this-
+
+- VITE_apiKey=your_api_key
+- VITE_authDomain=your_auth_domain
+- VITE_projectId= Your_project_id
+- VITE_storageBucket=your_storageBucket
+- VITE_messagingSenderId=your_messagingSenderId
+- VITE_appId=your_appId
+
+After completing firebase config run 'npm install' for installing all tha packages. And then run 'npm run dev' for running the project.
